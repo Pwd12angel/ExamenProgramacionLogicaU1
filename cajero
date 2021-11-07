@@ -1,0 +1,91 @@
+import java.util.Scanner;
+
+public class cajero {
+    public static void main(String[] args) {
+        Scanner leer = new Scanner(System.in);
+        int tarjeta = 1020304050;
+        int pin = 1234;
+        int x = 0,z=0;
+        int respuesta=0;
+        boolean salida = false;
+        System.out.println("Cajero HSBC\n(Cuautla Morelos,Reforma\nSaldo disponible)");
+        System.out.println("**********************************");
+        System.out.println("Leer Tarjeta");
+        int codigo = leer.nextInt();
+
+        if (codigo == tarjeta){
+
+            do {
+                if (z==0){
+                    System.out.println("Inserte su codigo de 4 dijitos");
+                    int pinc= leer.nextInt();
+                    if (pinc == pin) {
+                        System.out.println("Realizar servicio");
+                        System.out.println("*****************************");
+                        int op;
+                        do {
+                            System.out.println("1.-Cambio de PIN");
+                            System.out.println("2.-Retiro en efectivo");
+                            System.out.println("3.-Cambio de servicios");
+                            System.out.println("4.-Consulta de clima");
+                            System.out.println("5.-Salir");
+                            op = leer.nextInt();
+                            switch (op){
+                                case 1:
+                                    System.out.println("Cambio de pint");
+                                    z=+1;
+                                    break;
+                                case 2:
+                                    System.out.println("Retiro en efectivo");
+                                    z=+1;
+                                    break;
+                                case 3:
+                                    System.out.println("Pago de servicios");
+                                    z=+1;
+                                    break;
+                                case 4:
+                                    System.out.println("Consulta de clima");
+                                    System.out.println("Desea ver el clima ");
+                                    System.out.println("1.- si");
+                                    System.out.println("2.- no");
+                                    respuesta = leer.nextInt();
+                                    if (respuesta == 1){
+                                        System.out.println("Ubicacion del cajero: ");
+                                        System.out.println("Cajero HSBC\n(Cuautla Morelos,Reforma");
+                                        System.out.println("El clima es: 28° centigrados");
+                                        System.out.println("***************************************");
+                                    }else if (respuesta ==2){
+                                        System.out.println("16");
+                                    }
+                                    z=+1;
+                                    break;
+                                case 5:
+                                    System.out.println("Saliendo");
+                                    z=+1;
+                                    break;
+                                default:
+                                    System.out.println("Numero no valido");
+                                    break;
+                            }
+                        }while (op != 5);
+                    } else {
+                        x = x+1;
+                    }
+                    if (x == 3){
+                        System.out.println("PIN incorrecto");
+                        System.out.println("*******************");
+                        System.out.println("Tarjeta retenida");
+                    }
+                }
+                else if (z == 1){
+                   salida = true;
+                }
+
+            }
+            while (salida!= true);
+
+        }else {
+            System.out.println("Tarjeta no valida");
+        }
+    }
+}
